@@ -2,7 +2,7 @@
 title: MonoAlg3D
 description: A 3D monodomain equation solver using Finite Volume Method for cardiac electrophysiology simulations
 baseurl: ""
-url: "https://rsachetto.github.io/monoalg.github.io"
+url: "https://rsachetto.github.io/monoalg"
 
 # GitHub repository
 repository: rsachetto/MonoAlg3D_C
