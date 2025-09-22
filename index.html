@@ -17,8 +17,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: #f0f6fc;
+            background-color: #0d1117;
         }
         
         .container {
@@ -28,16 +28,26 @@
         }
         
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #161b22;
             color: white;
             padding: 2rem 0;
             text-align: center;
+            border-bottom: 1px solid #30363d;
         }
         
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .hero h1 img {
+            width: 3rem;
+            height: 3rem;
         }
         
         .hero p {
@@ -49,7 +59,7 @@
         .btn {
             display: inline-block;
             padding: 12px 24px;
-            background-color: #28a745;
+            background-color: #238636;
             color: white;
             text-decoration: none;
             border-radius: 6px;
@@ -58,16 +68,16 @@
         }
         
         .btn:hover {
-            background-color: #218838;
+            background-color: #2ea043;
         }
         
         .btn-secondary {
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
+            background-color: #21262d;
+            border: 2px solid #30363d;
         }
         
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: #30363d;
         }
         
         .section {
@@ -75,14 +85,14 @@
         }
         
         .section:nth-child(even) {
-            background-color: white;
+            background-color: #161b22;
         }
         
         h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
             text-align: center;
-            color: #333;
+            color: #f0f6fc;
         }
         
         .features {
@@ -93,10 +103,10 @@
         }
         
         .feature {
-            background: white;
+            background: #21262d;
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #30363d;
             text-align: center;
         }
         
@@ -107,19 +117,33 @@
         
         .feature h3 {
             margin-bottom: 1rem;
-            color: #667eea;
+            color: #58a6ff;
         }
         
         .installation {
-            background: #f8f9fa;
+            background: #21262d;
             padding: 2rem;
             border-radius: 8px;
             margin: 2rem 0;
+            border: 1px solid #30363d;
         }
         
         .installation h3 {
-            color: #333;
+            color: #f0f6fc;
             margin-bottom: 1rem;
+        }
+        
+        .installation a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        
+        .installation a:hover {
+            text-decoration: underline;
+        }
+        
+        .installation ul {
+            color: #f0f6fc;
         }
         
         pre {
@@ -132,16 +156,17 @@
         }
         
         .publications {
-            background: white;
+            background: #21262d;
             padding: 2rem;
             border-radius: 8px;
             margin: 2rem 0;
+            border: 1px solid #30363d;
         }
         
         .publication {
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #30363d;
         }
         
         .publication:last-child {
@@ -149,18 +174,18 @@
         }
         
         .publication h4 {
-            color: #667eea;
+            color: #58a6ff;
             margin-bottom: 0.5rem;
         }
         
         .publication .authors {
-            color: #666;
+            color: #8b949e;
             font-style: italic;
             margin-bottom: 0.5rem;
         }
         
         .publication a {
-            color: #28a745;
+            color: #58a6ff;
             text-decoration: none;
         }
         
@@ -185,14 +210,15 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            border: 3px solid #667eea;
+            border: 3px solid #58a6ff;
         }
         
         footer {
-            background: #333;
+            background: #161b22;
             color: white;
             text-align: center;
             padding: 2rem 0;
+            border-top: 1px solid #30363d;
         }
         
         .badge {
@@ -203,6 +229,11 @@
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
+            }
+            
+            .hero h1 img {
+                width: 2rem;
+                height: 2rem;
             }
             
             .hero p {
@@ -224,7 +255,10 @@
     <header>
         <div class="container">
             <div class="hero">
-                <h1>MonoAlg3D</h1>
+                <h1>
+                    <img src="https://github.com/rsachetto/MonoAlg3D_C/raw/master/docs/heart.ico" alt="MonoAlg3D Heart Icon">
+                    MonoAlg3D
+                </h1>
                 <p>3D Monodomain Equation Solver for Cardiac Electrophysiology</p>
                 <div class="badges">
                     <img src="https://github.com/rsachetto/MonoAlg3D_C/actions/workflows/build.yml/badge.svg" alt="Build Status" class="badge">
