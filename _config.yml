@@ -1,0 +1,31 @@
+# Site settings
+title: MonoAlg3D
+description: A 3D monodomain equation solver using Finite Volume Method for cardiac electrophysiology simulations
+baseurl: ""
+url: "https://rsachetto.github.io/monoalg.github.io"
+
+# GitHub repository
+repository: rsachetto/MonoAlg3D_C
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Theme
+theme: minima
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - .git/
+  - .gitignore
+
+# Navigation
+header_pages:
+  - index.html
+
+# Google Analytics (optional)
+# google_analytics: UA-XXXXXXXX-X
