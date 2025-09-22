@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonoAlg3D - 3D Cardiac Electrophysiology Simulator</title>
+    <meta name="description" content="MonoAlg3D is a program for solving the 3D monodomain equation using the Finite Volume Method for cardiac electrophysiology simulations.">
+    <link rel="icon" type="image/x-icon" href="https://github.com/rsachetto/MonoAlg3D_C/raw/main/docs/heart.ico">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+            margin: 0 10px;
+        }
+        
+        .btn:hover {
+            background-color: #218838;
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section:nth-child(even) {
+            background-color: white;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #333;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .installation {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .installation h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .publications {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .publication {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .publication:last-child {
+            border-bottom: none;
+        }
+        
+        .publication h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .publication .authors {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .publication a {
+            color: #28a745;
+            text-decoration: none;
+        }
+        
+        .publication a:hover {
+            text-decoration: underline;
+        }
+        
+        .contributors {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contributor {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .contributor img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #667eea;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            margin: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero">
+                <h1>MonoAlg3D</h1>
+                <p>3D Monodomain Equation Solver for Cardiac Electrophysiology</p>
+                <div class="badges">
+                    <img src="https://github.com/rsachetto/MonoAlg3D_C/actions/workflows/build.yml/badge.svg" alt="Build Status" class="badge">
+                </div>
+                <div style="margin-top: 2rem;">
+                    <a href="https://github.com/rsachetto/MonoAlg3D_C" class="btn">View on GitHub</a>
+                    <a href="#getting-started" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2>About MonoAlg3D</h2>
+            <p style="text-align: center; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+                MonoAlg3D is a high-performance program for solving the 3D monodomain equation using the Finite Volume Method. 
+                It's designed for cardiac electrophysiology simulations with GPU acceleration and supports multiple output formats 
+                including VTK for visualization in ParaView.
+            </p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <h3>GPU Accelerated</h3>
+                    <p>CUDA-based parallel computing for high-performance simulations</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💻</div>
+                    <h3>Cross-Platform</h3>
+                    <p>Support for Ubuntu, Fedora, and Windows operating systems</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Multiple Outputs</h3>
+                    <p>VTK format for ParaView visualization and plain text output</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Research Grade</h3>
+                    <p>Used in numerous peer-reviewed research publications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="getting-started">
+        <div class="container">
+            <h2>Getting Started</h2>
+            
+            <div class="installation">
+                <h3>Prerequisites</h3>
+                <ul>
+                    <li>Linux-based operating system</li>
+                    <li>NVIDIA Driver</li>
+                    <li>CUDA library</li>
+                </ul>
+            </div>
+            
+            <div class="installation">
+                <h3>Installation Guides</h3>
+                <p>📖 <a href="https://github.com/rsachetto/MonoAlg3D_C/blob/main/guide-monoalg3d-ubuntu.md">Ubuntu Guide</a></p>
+                <p>📖 <a href="https://github.com/rsachetto/MonoAlg3D_C/blob/main/guide-monoalg3d-fedora.md">Fedora Guide</a></p>
+                <p>📖 <a href="https://github.com/rsachetto/MonoAlg3D_C/blob/main/guide-monoalg3d-windows.md">Windows Guide</a></p>
+            </div>
+            
+            <div class="installation">
+                <h3>Compile</h3>
+                <pre><code>$ ./build.sh</code></pre>
+                <p>The binary files will be saved in the <code>bin</code> folder.</p>
+            </div>
+            
+            <div class="installation">
+                <h3>Running Examples</h3>
+                <pre><code>$ bin/MonoAlg3D -c example_configs/cuboid_ohara.ini</code></pre>
+                <p>The output will be saved in VTK format for visualization in <a href="https://www.paraview.org/">ParaView</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Contributors</h2>
+            <div class="contributors">
+                <div class="contributor">
+                    <h4>Rafael Sachetto Oliveira</h4>
+                    <p>@rsachetto</p>
+                </div>
+                <div class="contributor">
+                    <h4>Lucas Arantes Berg</h4>
+                    <p>@bergolho</p>
+                </div>
+                <div class="contributor">
+                    <h4>Rodrigo Weber dos Santos</h4>
+                    <p>@Rodrigo-Weber-dos-Santos</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem;">Among others contributing to this project.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>How to Cite</h2>
+            <div class="publications">
+                <div class="publication">
+                    <h4>Primary Citation</h4>
+                    <p class="authors">Oliveira RS, Rocha BM, Burgarelli D, Meira Jr W, Constantinides C, dos Santos RW</p>
+                    <p><em>Performance evaluation of GPU parallelization, space‐time adaptive algorithms, and their combination for simulating cardiac electrophysiology.</em> Int J Numer Meth Biomed Engng. 2018;34:e2913.</p>
+                    <a href="https://doi.org/10.1002/cnm.2913">https://doi.org/10.1002/cnm.2913</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Recent Research Publications</h2>
+            <div class="publications">
+                <div class="publication">
+                    <h4>In Silico TRials guide optimal stratification of ATrIal FIbrillation patients to Catheter Ablation and pharmacological medicaTION: the i-STRATIFICATION study</h4>
+                    <p class="authors">Albert Dasí, Claudia Nagel, Michael T B Pope, Rohan S Wijesurendra, Timothy R Betts, Rafael Sachetto, Axel Loewe, Alfonso Bueno-Orovio, Blanca Rodriguez</p>
+                    <a href="https://doi.org/10.1093/europace/euae150">View Publication</a>
+                </div>
+                
+                <div class="publication">
+                    <h4>Mechanisms of ischaemia-induced arrhythmias in hypertrophic cardiomyopathy: a large-scale computational study</h4>
+                    <p class="authors">James A Coleman, Ruben Doste, Zakariye Ashkir, Raffaele Coppini, Rafael Sachetto, Hugh Watkins, Betty Raman, Alfonso Bueno-Orovio</p>
+                    <a href="https://doi.org/10.1093/cvr/cvae086">View Publication</a>
+                </div>
+                
+                <div class="publication">
+                    <h4>Ectopic beats arise from micro-reentries near infarct regions in simulations of a patient-specific heart model</h4>
+                    <p class="authors">Rafael Sachetto Oliveira, Sergio Alonso, Fernando Otaviano Campos, Bernardo Martins Rocha, João Filipe Fernandes, Titus Kuehne, Rodrigo Weber Dos Santos</p>
+                    <a href="https://doi.org/10.1038/s41598-018-34304-y">View Publication</a>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="https://github.com/rsachetto/MonoAlg3D_C#research-utilizing-monoalg3d-not-all-not-sorted" class="btn">View All Publications</a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 MonoAlg3D Contributors. Licensed under the project's open source license.</p>
+            <p>Heart icons created by <a href="https://www.flaticon.com/free-icons/heart">phatplus - Flaticon</a></p>
+        </div>
+    </footer>
+</body>
+</html>

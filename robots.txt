@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rsachetto.github.io/monoalg.github.io/sitemap.xml
